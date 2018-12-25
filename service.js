@@ -11,7 +11,9 @@ router.get('/login', function (req, res) {
     res.render('views/login');
 });
 
-var params = bodyParser.urlencoded({ extended: false });
+var params = bodyParser.urlencoded({
+    extended: false
+});
 router.post('/login', params, function (req, res) {
     var usrname = req.body.username;
     var pwd = req.body.password;
@@ -37,16 +39,16 @@ router.get('/add', function (req, res) {
     res.render('views/add');
 });
 
-router.post('/add', params, function(req, res) {
+router.post('/add', params, function (req, res) {
     // var id = req.body.id;
     var name = req.body.name;
     var unit = req.body.unit;
     var inPrice = req.body.inPrice;
     var outPrice = req.body.outPrice;
     var addSql = "insert into product(id,name,unit,inPrice,outPrice,reminder) values(0,?,?,?,?,1);";
-    var addParams = [name, unit, inPrice, outPrice];
-    // var addParams = ['奶茶', '杯', '1.5', '3'];
-    connection.query(addSql, addParams, function(err, result) {
+    // var addParams = [name, unit, inPrice, outPrice];
+    var addParams = ['奶茶', '杯', '1.5', '3'];
+    connection.query(addSql, addParams, function (err, result) {
         if (err) {
             console.log(err);
             return;
@@ -54,7 +56,6 @@ router.post('/add', params, function(req, res) {
         console.log(result);
     });
 });
-
 
 router.get('/query', function (req, res) {
     var querySql = "select * from product";
@@ -77,6 +78,21 @@ router.get('/query', function (req, res) {
         res.render('views/query', {
             product: info
         });
+    });
+});
+
+router.get('/sell', function (req, res) {
+    res.render('views/sell');
+});
+
+router.post('/sell', params, function(req, res) {
+    var id = req.body.id;
+    var deleteSql = "delete from product where id = '" + id + "'";
+    connection.query(deleteSql, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        console.log(result);
     });
 });
 module.exports = router;
