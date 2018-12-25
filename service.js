@@ -46,8 +46,8 @@ router.post('/add', paramsUrlencoded, function (req, res) {
     var inPrice = req.body.inPrice;
     var outPrice = req.body.outPrice;
     var addSql = "insert into product(id,name,unit,inPrice,outPrice,reminder) values(0,?,?,?,?,1);";
-    // var addParams = [name, unit, inPrice, outPrice];
-    var addParams = ['奶茶', '杯', '1.5', '3'];
+    var addParams = [name, unit, inPrice, outPrice];
+    // var addParams = ['奶茶', '杯', '1.5', '3'];
     connection.query(addSql, addParams, function (err, result) {
         if (err) {
             console.log(err);
