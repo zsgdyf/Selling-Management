@@ -11,10 +11,10 @@ router.get('/login', function (req, res) {
     res.render('views/login');
 });
 
-var params = bodyParser.urlencoded({
+var paramsUrlencoded = bodyParser.urlencoded({
     extended: false
 });
-router.post('/login', params, function (req, res) {
+router.post('/login', paramsUrlencoded, function (req, res) {
     var usrname = req.body.username;
     var pwd = req.body.password;
     // console.log(usrname + ": " + pwd);
@@ -39,7 +39,7 @@ router.get('/add', function (req, res) {
     res.render('views/add');
 });
 
-router.post('/add', params, function (req, res) {
+router.post('/add', paramsUrlencoded, function (req, res) {
     // var id = req.body.id;
     var name = req.body.name;
     var unit = req.body.unit;
@@ -81,14 +81,28 @@ router.get('/query', function (req, res) {
     });
 });
 
+router.post('/query', paramsUrlencoded, function (req, res) {
+    var id = req.body.id;
+    var queryIdSql = "select * from product where id = '" + id + "'";
+    connection.query(queryIdSql, function (err, result) {
+        if (err) {
+            console.log(err);
+        }
+        console.log(result);
+        res.render('views/query', {
+            product: result
+        });
+    });
+});
+
 router.get('/sell', function (req, res) {
     res.render('views/sell');
 });
 
-router.post('/sell', params, function(req, res) {
+router.post('/sell', paramsUrlencoded, function (req, res) {
     var id = req.body.id;
     var deleteSql = "delete from product where id = '" + id + "'";
-    connection.query(deleteSql, function(err, result) {
+    connection.query(deleteSql, function (err, result) {
         if (err) {
             console.log(err);
         }
