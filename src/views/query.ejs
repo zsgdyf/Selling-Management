@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="css/mdui.min.css" rel="stylesheet">
+    <script src="js/mdui.min.js"></script>
+    <title>商品查询</title>
+</head>
+
+<body class="mdui-theme-primary-teal mdui-appbar-with-toolbar">
+    <div class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-theme">
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer', swipe: true}">
+                <i class="mdui-icon material-icons">menu</i>
+            </span>
+            <span style="width: 150px;" class="mdui-typo-title">商品查询</span>
+            <div class="mdui-toolbar-spacer"></div>
+            <div class="mdui-textfield mdui-textfield-expandable">
+                <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
+                <input class="mdui-textfield-input" type="text" placeholder="搜索" />
+                <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+            </div>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+        </div>
+    </div>
+    <%- include('drawer') -%>
+    <table class="mdui-table mdui-table-selectable mdui-table-hoverable">
+        <thead>
+            <tr>
+                <th>商品编号</th>
+                <th>商品名称</th>
+                <th>商品进价</th>
+                <th>商品售价</th>
+                <th>商品库存</th>
+                <th>单位</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% product.forEach(function(products) { %>
+            <tr>
+                <td>
+                    <%= products.id %>
+                </td>
+                <td>
+                    <%= products.name %>
+                </td>
+                <td>
+                    <%= products.inPrice %>
+                </td>
+                <td>
+                    <%= products.outPrice %>
+                </td>
+                <td>
+                    <%= products.reminder %>
+                </td>
+                <td>
+                    <%= products.unit %>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+
+    </table>
+</body>
+
+</html>

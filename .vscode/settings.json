@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.explorerKind": "external",
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 90,
+    "editor.colorDecorators": false
+}
