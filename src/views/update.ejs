@@ -27,6 +27,7 @@
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">商品编号</label>
                 <input type="text" class="mdui-textfield-input" name="id">
+                <div class="mdui-textfield-helper">商品编号无法修改，仅用来确认需要修改的商品</div>
             </div>
 
             <div class="mdui-textfield mdui-textfield-floating-label">
@@ -51,6 +52,11 @@
                 <i class="mdui-icon material-icons">shopping_cart</i>
                 <label class="mdui-textfield-label">出库价格</label>
                 <input type="text" class="mdui-textfield-input" name="outPrice">
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <i class="mdui-icon material-icons">filter_9_plus</i>
+                <label class="mdui-textfield-label">库存</label>
+                <input type="text" class="mdui-textfield-input" name="reminder">
             </div>
             <button class="mdui-btn mdui-color-theme mdui-ripple" type="reset" value="重置">重置</button>
             <button class="mdui-btn mdui-color-theme mdui-ripple" style="float: right;" mdui-dialog="{target: '#submitDialog'}">修改</button>

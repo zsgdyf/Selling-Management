@@ -95,6 +95,27 @@ router.post('/query', paramsUrlencoded, function (req, res) {
     });
 });
 
+router.get('/update', function (req, res) {
+    res.render('views/update');
+});
+
+router.post('/update', paramsUrlencoded,function(req, res) {
+    var id = req.body.id;
+    var name = req.body.name;
+    var unit = req.body.unit;
+    var inPrice = req.body.inPrice;
+    var outPrice = req.body.outPrice;
+    var reminder = req.body.reminder;
+    var updateSql = "update product set name=?, unit=?, inPrice=?, outPrice=?, reminder=? where id=?"
+    var updateParams = [name, unit, inPrice, outPrice, reminder, id];
+    connection.query(updateSql, updateParams, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        console.log(result);
+    });
+});
+
 router.get('/sell', function (req, res) {
     res.render('views/sell');
 });
@@ -108,5 +129,6 @@ router.post('/sell', paramsUrlencoded, function (req, res) {
         }
         console.log(result);
     });
+    res.render('views/sell');
 });
 module.exports = router;
