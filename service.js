@@ -32,7 +32,7 @@ router.post('/login', paramsUrlencoded, function (req, res) {
             res.redirect('/add');
         }
 
-    })
+    });
 });
 
 router.get('/add', function (req, res) {
@@ -99,7 +99,7 @@ router.get('/update', function (req, res) {
     res.render('views/update');
 });
 
-router.post('/update', paramsUrlencoded,function(req, res) {
+router.post('/update', paramsUrlencoded, function (req, res) {
     var id = req.body.id;
     var name = req.body.name;
     var unit = req.body.unit;
@@ -108,7 +108,7 @@ router.post('/update', paramsUrlencoded,function(req, res) {
     var reminder = req.body.reminder;
     var updateSql = "update product set name=?, unit=?, inPrice=?, outPrice=?, reminder=? where id=?"
     var updateParams = [name, unit, inPrice, outPrice, reminder, id];
-    connection.query(updateSql, updateParams, function(err, result) {
+    connection.query(updateSql, updateParams, function (err, result) {
         if (err) {
             console.log(err);
         }

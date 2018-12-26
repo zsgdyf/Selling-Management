@@ -21,7 +21,7 @@
             <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
         </div>
     </div>
-<%- include('drawer') -%>
+    <%- include('drawer') -%>
     <div style="padding: 5% 30%;">
         <form method="POST">
             <!-- <div class="mdui-textfield mdui-textfield-floating-label">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="mdui-textfield mdui-textfield-floating-label">
-                    <i class="mdui-icon material-icons">local_shipping</i>
+                <i class="mdui-icon material-icons">local_shipping</i>
                 <label class="mdui-textfield-label">入库价格</label>
                 <input type="text" class="mdui-textfield-input" name="inPrice">
             </div>
@@ -51,6 +51,11 @@
                 <i class="mdui-icon material-icons">shopping_cart</i>
                 <label class="mdui-textfield-label">出库价格</label>
                 <input type="text" class="mdui-textfield-input" name="outPrice">
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <i class="mdui-icon material-icons">filter_9_plus</i>
+                <label class="mdui-textfield-label">数量</label>
+                <input type="text" class="mdui-textfield-input" name="reminder">
             </div>
             <button class="mdui-btn mdui-color-theme mdui-ripple" type="reset" value="重置">重置</button>
             <button class="mdui-btn mdui-color-theme mdui-ripple" style="float: right;" mdui-dialog="{target: '#submitDialog'}">提交</button>
